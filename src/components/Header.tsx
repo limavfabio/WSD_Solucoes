@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import logo_texto_preto from "../assets/images/logo_texto_preto.png";
 
 const navigation = [
   { name: "Produtos", href: "#" },
@@ -23,8 +24,8 @@ export default function Header() {
             <span className="sr-only">WSD Soluções</span>
             <img
               className="h-8 w-auto"
-              src="/src/assets/images/logo_texto_preto.png"
-              alt=""
+              src={logo_texto_preto.src}
+              alt="WSD Solucões Logo"
             />
           </a>
         </div>
@@ -63,8 +64,8 @@ export default function Header() {
               <span className="sr-only">WSD Soluções</span>
               <img
                 className="h-8 w-auto"
-                src="/src/assets/images/logo_texto_preto.png"
-                alt=""
+                src={logo_texto_preto.src}
+                alt="WSD Solucões Logo"
               />
             </a>
             <button
