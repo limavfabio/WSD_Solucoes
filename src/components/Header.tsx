@@ -13,7 +13,6 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -25,6 +24,8 @@ export default function Header() {
     : "bg-transparent";
 
   useEffect(() => {
+    setScrolled(window.scrollY > 32);
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -34,10 +35,10 @@ export default function Header() {
 
   return (
     <header
-      className={`inset-x-0 top-0 z-50 sticky transition-all duration-300 ${headerClasses}`}
+      className={`sticky inset-x-0 top-0 z-50 transition-all duration-300 ${headerClasses}`}
     >
       <nav
-        className={`flex items-center justify-between p-6 lg:px-28 transition-all`}
+        className={`flex items-center justify-between p-6 transition-all lg:px-28`}
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
