@@ -1,7 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo_texto_preto from "../assets/images/logo_texto_preto.png";
+import logo_texto_branco from "../assets/images/logo_texto_branco.png";
 
 const navigation = [
   { name: "Produtos", href: "#" },
@@ -13,10 +14,30 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 32);
+  };
+
+  const headerClasses = scrolled
+    ? "bg-gray-900 bg-opacity-95 text-white backdrop-blur-sm shadow-lg"
+    : "bg-transparent";
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header
+      className={`inset-x-0 top-0 z-50 sticky transition-all duration-300 ${headerClasses}`}
+    >
       <nav
-        className="flex items-center justify-between p-6 lg:px-8"
+        className={`flex items-center justify-between p-6 lg:px-28 transition-all`}
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -24,7 +45,7 @@ export default function Header() {
             <span className="sr-only">WSD Soluções</span>
             <img
               className="h-8 w-auto"
-              src={logo_texto_preto.src}
+              src={scrolled ? logo_texto_branco.src : logo_texto_preto.src}
               alt="WSD Solucões Logo"
             />
           </a>
@@ -36,7 +57,12 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            <Bars3Icon
+              className={`h-6 w-6 transition duration-300 ${
+                scrolled ? "text-white" : "text-gray-900"
+              }`}
+              aria-hidden="true"
+            />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
@@ -44,7 +70,9 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className={`text-sm font-semibold leading-6 transition duration-300 ${
+                scrolled ? "text-gray-100" : "text-gray-900"
+              }`}
             >
               {item.name}
             </a>
