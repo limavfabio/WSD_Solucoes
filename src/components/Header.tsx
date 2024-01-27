@@ -23,7 +23,7 @@ export default function Header() {
             <span className="sr-only">WSD Soluções</span>
             <img
               className="h-8 w-auto"
-              src="/assets/images/logo_texto_preto.png"
+              src="/src/assets/images/logo_texto_preto.png"
               alt=""
             />
           </a>
@@ -63,7 +63,7 @@ export default function Header() {
               <span className="sr-only">WSD Soluções</span>
               <img
                 className="h-8 w-auto"
-                src="/assets/images/logo_texto_preto.png"
+                src="/src/assets/images/logo_texto_preto.png"
                 alt=""
               />
             </a>
