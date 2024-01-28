@@ -71,7 +71,7 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className={`text-sm font-semibold leading-6 transition duration-300 ${
+              className={`font-semibold leading-6 transition duration-300 ${
                 scrolled ? "text-gray-100" : "text-gray-900"
               }`}
             >
